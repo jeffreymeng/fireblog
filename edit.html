@@ -28,7 +28,6 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <script src="http://methvin.com/splitter/splitter.js"></script>
     <style type="text/css">
 .splitter {
 	height: 200px;
@@ -43,11 +42,6 @@
 	background: #cab;
 }
 </style>
-<script type="text/javascript">
-$().ready(function() {
-	$(".simple").splitter();
-});
-</script>
 </head>
 
 <body>
@@ -186,16 +180,15 @@ $().ready(function() {
        output.html(convertToHtml(source.val()));
     });
 });
-$('.divider-resizable').draggable({
-    axis: 'x', 
-    containment: 'parent',
-    helper: 'clone', 
-    drag: function (event, ui) { 
-        var height = ui.offset.right; 
-        $(this).prev().right(legnth); 
-    } 
-});
+
     </script>
+    <script src="http://methvin.com/splitter/splitter.js"></script>
+    
+<script type="text/javascript">
+$().ready(function() {
+	$(".simple").splitter();
+});
+</script>
 </body>
 
 </html>
