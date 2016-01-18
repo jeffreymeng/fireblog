@@ -95,7 +95,6 @@
                     <input class="form-control" id="post-info" placeholder="Write here the post-info of your post(on this page it is the text that says Posted by Jeffrey Meng on January 17, 2016).">
                     <textarea class="form-control" id="markdown" placeholder="Write yout blog content here. Markdown is supported"></textarea>
                     <div id="preview"></div>
-                    <a onclick="showFullHtml()">Show what my post will look like on a real page!</a>
                 </div>
             </div>
         </div>
@@ -154,10 +153,8 @@
     <script>
         /* global convertToHtml */
 
-        var text = $('#markdown');
-        
-        text.onkeyup = text.onkeypress = function(){
-            $('#preview').html(convertToHtml(this.value));
+        $('#markdown').onkeyup = $('#markdown').onkeypress = function(){
+            $('#preview').html(convertoHtml($("markdown").val()));
             
         };
     </script>
