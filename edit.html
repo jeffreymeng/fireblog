@@ -154,10 +154,10 @@
     <script>
         /* global convertToHtml */
 
-        var text = document.getElementById('markdown');
+        var text = $('#markdown');
         
         text.onkeyup = text.onkeypress = function(){
-            document.getElementById('preview').html(convertToHtml(this.value));
+            $('#preview').html(convertToHtml(this.value));
             
         };
     </script>
