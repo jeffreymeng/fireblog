@@ -10,6 +10,7 @@
 	
 	</head>
 	<body>
+		<p><button id="show-editor">Show Only Left</button><button id="show-both">Re-Center</button><button id="show-preview">Show Only Right</button></p>
 		<div class="pretty-split-pane-frame"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
 			<div class="split-pane fixed-left" style="min-width: 5px;">
 				<div class="split-pane-component" id="left-component" style="width: 401px;">
@@ -37,16 +38,22 @@
 		<script src="js/jquery.min.js"></script>
 		<script src="js/splitpane.min.js"></script>
 			<script>
-			$(function() {
-				var ToggleState = true; // true if shown, false if hidden
+				$(function() {
 				$('div.split-pane').splitPane();
-				$('.toggle').on('click', function() {
-					if (ToggleState) {
-						$('div.split-pane').splitPane('firstComponentSize', 0);
-					} else {
+				$('.show-editor').on('click', function() {
 						$('div.split-pane').splitPane('lastComponentSize', 0);
-					}
 				});
+				$('.show-preview').on('click', function() {
+						$('div.split-pane').splitPane('firstComponentSize', 0);
+				});
+				$('.show-both').on('click', function() {
+						$('div.sp-div').attr('style', 'left="50%"');
+						$('div.sp-right').attr('style', 'left="50%"');
+						$('div.sp-left').attr('style', 'width="50%"');
+
+
+				});
+				
 
 			});
 		</script>
