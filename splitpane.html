@@ -4,7 +4,31 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<title>Fixed left</title>
 		<link rel="stylesheet" href="css/splitpane.min.css">
+		<style type="text/css">
 
+			html, body {
+				height: 100%;
+				min-height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+
+			#left-component {
+				width: 20em; /* Same as divider left */
+			}
+
+			#my-divider {
+				left: 20em;
+				width: 5px;
+				background-color:gray;
+			}
+
+			#right-component {
+				left: 20em; /* Same as divider left */
+				margin-left: 5px; /* Same as divider width */
+			}
+			
+		</style>
 
 		
 	
