@@ -22,13 +22,14 @@
 			#my-divider {
 				left: 20em;
 				width: 5px;
+				color:gray;
 			}
 
 			#right-component {
 				left: 20em; /* Same as divider left */
 				margin-left: 5px; /* Same as divider width */
 			}
-
+			
 		</style>
 
 	
@@ -46,14 +47,14 @@
 							You can, however, re-size this component by dragging the divider, and it will adjust if
 							the right component reaches it's <code>min-width</code> (<code>0px</code> in this example).
 						</p>
-						<p><button class="toggle">Toggle Component.</button></p>
+						<p><button class="toggle">Toggle Left.</button></p>
 					</div>
 				</div>
 				<div class="split-pane-divider" id="my-divider" style="left: 401px;"><div class="split-pane-divider-inner"></div></div>
 				<div class="split-pane-component" id="right-component" style="left: 401px;">
 					<div class="pretty-split-pane-component-inner"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
 						<p>This split pane component is dynamic: when re-sizing the browser window, the width will adjust.</p>
-						<p><button>Collapse first component</button></p>
+						<p><button class='toggle'>Toggle Left</button></p>
 					</div>
 				</div>
 			<div class="split-pane-resize-shim" style="display: none;"></div></div>
