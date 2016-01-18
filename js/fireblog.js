@@ -15,8 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-var converter = new showdown.Converter();
-showdown.setFlavor("github");
+var converter = new showdown.Converter({"tables":true, "strikethrough":true, "tasklists":true, parseImgDimensions:true});
 function convertToHtml(text) {
    return converter.makeHtml(text);
 }
