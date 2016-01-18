@@ -152,11 +152,12 @@
     <script src="js/fireblog.js"></script>
     <script>
         /* global convertToHtml */
-
+        $(document).ready(function(){
         $('#markdown').onkeyup = $('#markdown').onkeypress = function(){
             $('#preview').html(convertoHtml($("markdown").val()));
             
         }; 
+        });
     </script>
 </body>
 
