@@ -31,20 +31,7 @@
 
 		</style>
 
-		<script>
-			$(function() {
-				var ToggleState = true; // true if shown, false if hidden
-				$('div.split-pane').splitPane();
-				$('.toggle').on('click', function() {
-					if (ToggleState) {
-						$('div.split-pane').splitPane('firstComponentSize', 0);
-					} else {
-						$('div.split-pane').splitPane('lastComponentSize', 0);
-					}
-				});
-
-			});
-		</script>
+	
 	</head>
 	<body>
 		<div class="pretty-split-pane-frame"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
@@ -73,5 +60,18 @@
 		</div>
 		<script src="js/jquery.min.js"></script>
 		<script src="js/splitpane.min.js"></script>
+			<script>
+			$(function() {
+				var ToggleState = true; // true if shown, false if hidden
+				$('div.split-pane').splitPane();
+				$('.toggle').on('click', function() {
+					if (ToggleState) {
+						$('div.split-pane').splitPane('firstComponentSize', 0);
+					} else {
+						$('div.split-pane').splitPane('lastComponentSize', 0);
+					}
+				});
 
+			});
+		</script>
 </body></html>
