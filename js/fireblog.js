@@ -16,6 +16,6 @@
    limitations under the License.
 */
 function convertToHtml(text)
-   var converter = new showdown.Converter()
+   converter = new showdown.Converter();
    return converter.makeHtml(text)
 };
