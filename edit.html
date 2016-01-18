@@ -156,7 +156,7 @@
     source=$("#markdown");
     output=$("#preview");
     source.keyup(function() {
-       output.text(convertToHtml(source.val()));
+       output.html(convertToHtml(source.val()));
     });
 });
     </script>
