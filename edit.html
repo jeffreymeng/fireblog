@@ -118,39 +118,43 @@
                 
                 <div class="col-lg-12">
                     <input class="form-control" id="title" placeholder="Write here the title of your post(on this page it is the text that says Post Editor).">
+                    <br>
                     <input class="form-control" id="subtitle" placeholder="Write here the subtitle of your post(on this page it is the text that says Create a new post here).">
+                    <br>
                     <input class="form-control" id="post-info" placeholder="Write here the post-info of your post(on this page it is the text that says Posted by Jeffrey Meng on January 17, 2016).">
                 </div>
-
-                 <div class="pretty-split-pane-frame"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
-        			<div class="split-pane fixed-left" style="min-width: 5px;">
-        				<div class="split-pane-component sp-right" id="left-component" style="width: 401px;">
-        					<div class="pretty-split-pane-component-inner"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
-        						<p>
-        							This split pane component is fixed: when re-sizing the browser window, it will
-        							keep the same width.
-        						</p>
-        						<p>
-        							You can, however, re-size this component by dragging the divider, and it will adjust if
-        							the right component reaches it's <code>min-width</code> (<code>0px</code> in this example).
-        						</p>
-        					</div>
-        				</div>
-        				<div class="split-pane-divider sp-div" id="my-divider" style="left: 50%;"><div class="split-pane-divider-inner"></div></div>
-        				<div class="split-pane-component sp-left" id="right-component" style="left: 50%;">
-        					<div class="pretty-split-pane-component-inner"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
-        						<p>This split pane component is dynamic: when re-sizing the browser window, the width will adjust.</p>
-        					</div>
-        				</div>
-        			<div class="split-pane-resize-shim" style="display: none;"></div></div>
-        		</div>
+                <br>
+                <div class="col-lg-12">
+                    <p><button id="show-editor">Show Only Left</button><button id="show-both">Re-Center</button><button id="show-preview">Show Only Right</button></p>
+                    <div class="pretty-split-pane-frame"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
+                        <div class="split-pane fixed-left" style="min-width: 5px;">
+                            <div class="split-pane-component" id="left-component" style="width: 50%;">
+                                <div class="pretty-split-pane-component-inner"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
+                                    <p>
+                                        This split pane component is fixed: when re-sizing the browser window, it will
+                                        keep the same width.
+                                    </p>
+                                    <p>
+                                        You can, however, re-size this component by dragging the divider, and it will adjust if
+                                        the right component reaches it's <code>min-width</code> (<code>0px</code> in this example).
+                                    </p>
+                                    <p><button class="toggle">Toggle Left.</button></p>
+                                </div>
+                            </div>
+                            <div class="split-pane-divider" id="my-divider" style="left: 50%;"><div class="split-pane-divider-inner"></div></div>
+                            <div class="split-pane-component" id="right-component" style="left: 50%;">
+                            <div class="pretty-split-pane-component-inner"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
+                                    <p>This split pane component is dynamic: when re-sizing the browser window, the width will adjust.</p>
+                                    <p><button class='toggle'>Toggle Left</button></p>
+                                </div>
+                            </div>
+                        <div class="split-pane-resize-shim" style="display: none;">
+                    </div>
+                </div>
+                <hr>
             </div>
         </div>
     </article>
-
-    <hr>
-    
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -182,7 +186,7 @@
                             </a>
                         </li>
                     </ul>
-                    <p class="copyright text-muted">Copyright &copy; Your Website 2014</p>
+                    <p class="copyright text-muted">Copyright &copy; 2016 Jeffrey Meng</p>
                 </div>
             </div>
         </div>
@@ -223,13 +227,13 @@
     <script>
 			$(function() {
 				$('div.split-pane').splitPane();
-				$('.show-editor').on('click', function() {
+				$('#show-editor').on('click', function() {
 						$('div.split-pane').splitPane('lastComponentSize', 0);
 				});
-				$('.show-preview').on('click', function() {
+				$('#show-preview').on('click', function() {
 						$('div.split-pane').splitPane('firstComponentSize', 0);
 				});
-				$('.show-both').on('click', function() {
+				$('#show-both').on('click', function() {
 						$('div.sp-div').attr('style', 'left="50%"');
 						$('div.sp-right').attr('style', 'left="50%"');
 						$('div.sp-left').attr('style', 'width="50%"');
