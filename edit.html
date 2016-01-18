@@ -28,7 +28,26 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-
+    <script src="http://methvin.com/splitter/splitter.js"></script>
+    <style type="text/css">
+.splitter {
+	height: 200px;
+	width: 500px;
+	border: 5px solid #aaa;
+}
+.splitter div {
+	overflow: auto;
+}
+.vsplitbar {
+	width: 5px;
+	background: #cab;
+}
+</style>
+<script type="text/javascript">
+$().ready(function() {
+	$(".simple").splitter();
+});
+</script>
 </head>
 
 <body>
@@ -87,18 +106,23 @@
 
     <!-- Post Content -->
     <article>
-        <div class="container-fluid">
+        <div class="container-fluid splitter">
             <div class="row">
                 
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <input class="form-control" id="title" placeholder="Write here the title of your post(on this page it is the text that says Post Editor).">
                     <input class="form-control" id="subtitle" placeholder="Write here the subtitle of your post(on this page it is the text that says Create a new post here).">
                     <input class="form-control" id="post-info" placeholder="Write here the post-info of your post(on this page it is the text that says Posted by Jeffrey Meng on January 17, 2016).">
-                    <textarea class="form-control" id="markdown" placeholder="Write yout blog content here. Markdown is supported"></textarea>
                 </div>
-                <div class="col-lg-6">
-                    <div id="preview"></div>
-                </div>
+
+                <div class="simple" style="position: relative;">
+	<textarea id="markdown" style="position: absolute; z-index: 1; left: 0px; width: 495px; height: 200px; -webkit-user-select: text;" class="form-control" placeholder="write your next post here. Markdown is supported">
+	This is the left pane of the minimal vertical splitter. Easy, eh?
+	</textarea><div class="vsplitbar" unselectable="on" style="z-index: 100; position: absolute; -webkit-user-select: none; cursor: e-resize; left: 495px; height: 200px;"><a href="javascript:void(0)" accesskey="" tabindex="0" title="vsplitbar"></a></div>
+	<div id="preview" style="position: absolute; z-index: 1; left: 500px; width: 0px; height: 200px; -webkit-user-select: text;">
+	This is the right pane of the minimal vertical splitter. No initial size or position was given, so the two panes start at the same size. The other examples are more complex, but show typical markup and code.
+	</div>
+</div>
             </div>
         </div>
     </article>
@@ -161,6 +185,15 @@
     source.keyup(function() {
        output.html(convertToHtml(source.val()));
     });
+});
+$('.divider-resizable').draggable({
+    axis: 'x', 
+    containment: 'parent',
+    helper: 'clone', 
+    drag: function (event, ui) { 
+        var height = ui.offset.right; 
+        $(this).prev().right(legnth); 
+    } 
 });
     </script>
 </body>
