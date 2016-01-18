@@ -185,12 +185,20 @@
     
     <script src="js/splitpane.min.js"></script>
     <script>
+    $(document).ready(function(){
+        var editor = $("#markdown");
+        var preview = $("#preview");
+        editor.val(localStorage.getItem("post"));
+        preview.html(convertToHtml(localStorage.getItem("post")));
+        
+    });
         /* global convertToHtml */
        $(function() {
             var source=$("#markdown");
             var output=$("#preview");
             source.keyup(function() {
                output.html(convertToHtml(source.val()));
+               localStorage.setItem("post", source.val());
             });
         });
         
