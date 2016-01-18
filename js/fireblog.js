@@ -15,7 +15,7 @@
    See the License for the specific language governing permissions and
    limitations under the License.
 */
-function convertToHtml(text)
-   converter = new showdown.Converter();
+var converter = new showdown.Converter();
+function convertToHtml(text) {
    return converter.makeHtml(text)
 };
