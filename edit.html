@@ -93,7 +93,7 @@
                     <input class="form-control" id="title" placeholder="Write here the title of your post(on this page it is the text that says Post Editor).">
                     <input class="form-control" id="subtitle" placeholder="Write here the subtitle of your post(on this page it is the text that says Create a new post here).">
                     <input class="form-control" id="post-info" placeholder="Write here the post-info of your post(on this page it is the text that says Posted by Jeffrey Meng on January 17, 2016).">
-                    <textarea class="form-control" id="markdown" placeholder="Write yout blog content here. Markdown is "></textarea>
+                    <textarea class="form-control" id="markdown" placeholder="Write yout blog content here. Markdown is supported"></textarea>
                     <div id="preview"></div>
                     <a onclick="showFullHtml()">Show what my post will look like on a real page!</a>
                 </div>
@@ -157,7 +157,7 @@
         var text = document.getElementById('markdown');
         
         text.onkeyup = text.onkeypress = function(){
-            document.getElementById('preview').innerHTML = convertToHtml(this.value);
+            document.getElementById('preview').html(convertToHtml(this.value));
             
         };
     </script>
