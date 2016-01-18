@@ -21,7 +21,29 @@
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/jquery-ui-custom.min.css" type="text/css" />
+    <link rel="stylesheet" href="css/splitpane.min.css" type="text/css" />
+     <style type="text/css">
+            html, body {
+                height: 100%;
+                min-height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            .split-pane-divider {
+                background: #aaa;
+            }
+            #left-component {
+                width: 20em;
+            }
+            #my-divider {
+                left: 20em; /* Same as left component width */
+                width: 5px;
+            }
+            #right-component {
+                left: 20em;  /* Same as left component width */
+                margin-left: 5px;  /* Same as divider width */
+            }
+    </style>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -87,7 +109,7 @@
 
     <!-- Post Content -->
     <article>
-        <div class="container-fluid">
+        <div class="container">
             <div class="row">
                 
                 <div class="col-lg-12">
@@ -96,14 +118,15 @@
                     <input class="form-control" id="post-info" placeholder="Write here the post-info of your post(on this page it is the text that says Posted by Jeffrey Meng on January 17, 2016).">
                 </div>
 
-                <div class="simple" style="position: relative;">
-                	<div class="ui-layout-north">
-                	    <textarea class="form-control" placeholder="write your next post here. Markdown is supported"></textarea>
-                	</div>
-
-                	<div id="preview" class="ui-layout-south">
-                	This is the right pane of the minimal vertical splitter. No initial size or position was given, so the two panes start at the same size. The other examples are more complex, but show typical markup and code.
-                	</div>
+                 <div class="split-pane fixed-left">
+                    <div class="split-pane-component" id="left-component">
+                        This is the left component
+                    </div>
+                    <div class="split-pane-divider" id="my-divider"></div>
+                    <div class="split-pane-component" id="right-component">
+                        This is the right component
+                        <button onclick="$('div.split-pane').splitPane('firstComponentSize', 0);">Collapse first component</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -159,8 +182,7 @@
     <script src="js/clean-blog.min.js"></script>
     <script src="js/markdown.js"></script>
     <script src="js/fireblog.js"></script>
-    <script src="js/jquery-ui-custom.min.js"></script>
-    <script src="js/layout.min.js"></script>
+    <script src="js/splitpane.min.js"></script>
     <script>
         /* global convertToHtml */
        $(function() {
@@ -174,8 +196,8 @@
         
     </script>
     <script>
-        $(document).ready(function () {
-            $('body').layout({ applyDefaultStyles: true });
+        $(function() {
+            $('div.split-pane').splitPane();
         });
     </script>
 </html>
