@@ -23,27 +23,31 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/splitpane.min.css" type="text/css" />
      <style type="text/css">
-            html, body {
-                height: 100%;
-                min-height: 100%;
-                margin: 0;
-                padding: 0;
-            }
-            .split-pane-divider {
-                background: #aaa;
-            }
-            #left-component {
-                width: 20em;
-            }
-            #my-divider {
-                left: 20em; /* Same as left component width */
-                width: 5px;
-            }
-            #right-component {
-                left: 20em;  /* Same as left component width */
-                margin-left: 5px;  /* Same as divider width */
-            }
-    </style>
+
+			html, body {
+				height: 100%;
+				min-height: 100%;
+				margin: 0;
+				padding: 0;
+			}
+
+			#left-component {
+				width: 20em; /* Same as divider left */
+			}
+
+			#my-divider {
+				left: 20em;
+				width: 5px;
+				background-color:gray;
+			}
+
+			#right-component {
+				left: 20em; /* Same as divider left */
+				margin-left: 5px; /* Same as divider width */
+			}
+			
+		</style>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -118,16 +122,28 @@
                     <input class="form-control" id="post-info" placeholder="Write here the post-info of your post(on this page it is the text that says Posted by Jeffrey Meng on January 17, 2016).">
                 </div>
 
-                 <div class="split-pane fixed-left">
-                    <div class="split-pane-component" id="left-component">
-                        This is the left component
-                    </div>
-                    <div class="split-pane-divider" id="my-divider"></div>
-                    <div class="split-pane-component" id="right-component">
-                        This is the right component
-                        <button onclick="$('div.split-pane').splitPane('firstComponentSize', 0);">Collapse first component</button>
-                    </div>
-                </div>
+                 <div class="pretty-split-pane-frame"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
+        			<div class="split-pane fixed-left" style="min-width: 5px;">
+        				<div class="split-pane-component sp-right" id="left-component" style="width: 401px;">
+        					<div class="pretty-split-pane-component-inner"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
+        						<p>
+        							This split pane component is fixed: when re-sizing the browser window, it will
+        							keep the same width.
+        						</p>
+        						<p>
+        							You can, however, re-size this component by dragging the divider, and it will adjust if
+        							the right component reaches it's <code>min-width</code> (<code>0px</code> in this example).
+        						</p>
+        					</div>
+        				</div>
+        				<div class="split-pane-divider sp-div" id="my-divider" style="left: 50%;"><div class="split-pane-divider-inner"></div></div>
+        				<div class="split-pane-component sp-left" id="right-component" style="left: 50%;">
+        					<div class="pretty-split-pane-component-inner"><!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
+        						<p>This split pane component is dynamic: when re-sizing the browser window, the width will adjust.</p>
+        					</div>
+        				</div>
+        			<div class="split-pane-resize-shim" style="display: none;"></div></div>
+        		</div>
             </div>
         </div>
     </article>
@@ -205,8 +221,24 @@
         
     </script>
     <script>
-        $(function() {
-            $('div.split-pane').splitPane();
-        });
-    </script>
+			$(function() {
+				$('div.split-pane').splitPane();
+				$('.show-editor').on('click', function() {
+						$('div.split-pane').splitPane('lastComponentSize', 0);
+				});
+				$('.show-preview').on('click', function() {
+						$('div.split-pane').splitPane('firstComponentSize', 0);
+				});
+				$('.show-both').on('click', function() {
+						$('div.sp-div').attr('style', 'left="50%"');
+						$('div.sp-right').attr('style', 'left="50%"');
+						$('div.sp-left').attr('style', 'width="50%"');
+
+
+				});
+				
+
+			});
+		</script>
+
 </html>
