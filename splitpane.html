@@ -40,13 +40,13 @@
 			<script>
 				$(function() {
 				$('div.split-pane').splitPane();
-				$('.show-editor').on('click', function() {
+				$('#show-editor').on('click', function() {
 						$('div.split-pane').splitPane('lastComponentSize', 0);
 				});
-				$('.show-preview').on('click', function() {
+				$('#show-preview').on('click', function() {
 						$('div.split-pane').splitPane('firstComponentSize', 0);
 				});
-				$('.show-both').on('click', function() {
+				$('#show-both').on('click', function() {
 						$('div.sp-div').attr('style', 'left="50%"');
 						$('div.sp-right').attr('style', 'left="50%"');
 						$('div.sp-left').attr('style', 'width="50%"');
