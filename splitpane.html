@@ -198,7 +198,7 @@
             var output=$("#preview");
             source.keyup(function() {
                localStorage.setItem("post", source.val());
-               output.html(convertToHtml(source.val().replace("{{exit full screen}}", "<a onclick='window.lcoation.href=splitpane.html' style='color:blue;text-decoration:underline;'>Click to enabe Scrolling</a>")));
+               output.html(convertToHtml(source.val().replace("{{exit full screen}}", "<a onclick='window.lcoation.href=\"splitpane.html\"' style='color:blue;text-decoration:underline;'>Click to enabe Scrolling</a>")));
 
             });
         });
