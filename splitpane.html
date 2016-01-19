@@ -114,10 +114,10 @@
 	</header>
 
 	<p>
-		<button id="show-editor">Show Only Left</button>
-		<button id="show-both">Re-Center</button>
-		<button id="show-preview">Show Only Right</button>
+
+		<a href="javascript:fullScreen()">Full Screen</a>
 	</p>
+	<a name="fullscreen"></a>
 	<div class="pretty-split-pane-frame">
 		<!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
 		<div class="split-pane fixed-left" style="min-width: 5px;">
@@ -197,8 +197,9 @@
             var source=$(".markdown");
             var output=$("#preview");
             source.keyup(function() {
-               output.html(convertToHtml(source.val()));
                localStorage.setItem("post", source.val());
+               output.html(convertToHtml(source.val().replace("{{exit full screen}}", "<a onclick='enableScroll();window.lcoation.href=splitpane.html' style='color:blue;text-decoration:underline;'>Click to enabe Scrolling</a>")));
+
             });
         });
         
@@ -209,6 +210,47 @@
 			$('div.split-pane').splitPane();
 			});
 
+		function fullScreen() {
+			window.location.hash="fullscreen";
+			disableScroll();
+		}
+		
+
+// left: 37, up: 38, right: 39, down: 40,
+// spacebar: 32, pageup: 33, pagedown: 34, end: 35, home: 36
+var keys = {37: 1, 38: 1, 39: 1, 40: 1};
+
+function preventDefault(e) {
+  e = e || window.event;
+  if (e.preventDefault)
+      e.preventDefault();
+  e.returnValue = false;  
+}
+
+function preventDefaultForScrollKeys(e) {
+    if (keys[e.keyCode]) {
+        preventDefault(e);
+        return false;
+    }
+}
+
+function disableScroll() {
+  if (window.addEventListener) // older FF
+      window.addEventListener('DOMMouseScroll', preventDefault, false);
+  window.onwheel = preventDefault; // modern standard
+  window.onmousewheel = document.onmousewheel = preventDefault; // older browsers, IE
+  window.ontouchmove  = preventDefault; // mobile
+  document.onkeydown  = preventDefaultForScrollKeys;
+}
+
+function enableScroll() {
+    if (window.removeEventListener)
+        window.removeEventListener('DOMMouseScroll', preventDefault, false);
+    window.onmousewheel = document.onmousewheel = null; 
+    window.onwheel = null; 
+    window.ontouchmove = null;  
+    document.onkeydown = null;  
+}
 	</script>
 
 </html>
