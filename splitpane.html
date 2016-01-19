@@ -121,13 +121,9 @@
 	<div class="pretty-split-pane-frame">
 		<!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
 		<div class="split-pane fixed-left" style="min-width: 5px;">
-			<div class="split-pane-component" id="left-component" style="width: 50%;">
-				<div class="pretty-split-pane-component-inner">
-					<!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
-					<textarea class="form-control" id="markdown"></textarea>
-					</p>
-				</div>
-			</div>
+			<textarea class="split-pane-component markup" id="left-component" style="width: 50%;">
+				
+			</textarea>
 			<div class="split-pane-divider" id="my-divider" style="left: 50%;">
 				<div class="split-pane-divider-inner"></div>
 			</div>
@@ -190,7 +186,7 @@
     <script src="js/splitpane.min.js"></script>
     <script>
     $(document).ready(function(){
-        var editor = $("#markdown");
+        var editor = $(".markdown");
         var preview = $("#preview");
         editor.val(localStorage.getItem("post"));
         preview.html(convertToHtml(localStorage.getItem("post")));
@@ -198,7 +194,7 @@
     });
         /* global convertToHtml */
        $(function() {
-            var source=$("#markdown");
+            var source=$(".markdown");
             var output=$("#preview");
             source.keyup(function() {
                output.html(convertToHtml(source.val()));
