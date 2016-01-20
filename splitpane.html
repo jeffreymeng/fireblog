@@ -117,7 +117,7 @@
 
 		<a href="javascript:fullScreen()">Full Screen</a>
 	</p>
-	<a name="fullscreen"></a>
+	<a name="fullscreen" id="sphe"></a>
 	<div class="pretty-split-pane-frame">
 		<!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
 		<div class="split-pane fixed-left" style="min-width: 5px;">
@@ -209,9 +209,12 @@
 		$(function() {
 			$('div.split-pane').splitPane();
 			});
-
+		if (window.location.hash === "#fullscreen") {
+			fullScreen();
+		}
 		function fullScreen() {
-			window.location.hash="fullscreen";
+			window.location.hash="#fullscreen";
+			$("#sphe").scrollIntoView();
 			disableScroll();
 		}
 		
