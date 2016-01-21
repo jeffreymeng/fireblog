@@ -76,9 +76,9 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                     <div class="post-heading">
-                        <h1>Man must explore, and this is exploration at its greatest</h1>
-                        <h2 class="subheading">Problems look mighty small from 150 miles up</h2>
-                        <span class="meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</span>
+                        <h1 id="post-header">Man must explore, and this is exploration at its greatest</h1>
+                        <h2 class="subheading" id="post-subheading">Problems look mighty small from 150 miles up</h2>
+                        <span class="meta" id="post-meta">Posted by <a href="#">Start Bootstrap</a> on August 24, 2014</span>
                     </div>
                 </div>
             </div>
@@ -89,7 +89,7 @@
     <article>
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1" id="post-content">
                     <p>Never in all their history have men been able truly to conceive of the world as one: a single sphere, a globe, having the qualities of a globe, a round earth in which all the directions eventually meet, in which there is no center because every point, or none, is center — an equal earth which all men occupy as equals. The airman's earth, if free men make it, will be truly round: a globe in practice, not in theory.</p>
 
                     <p>Science cuts two ways, of course; its products can be used for both good and evil. But there's no turning back from science. The early warnings about technological dangers also come from science.</p>
@@ -178,6 +178,36 @@
     <script src="js/clean-blog.min.js"></script>
     
     <script src="js/fireblog.js"></script>
+    
+    <script>
+        function getQuery(name) {
+            name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+            var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+            results = regex.exec(location.search);
+            return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+            
+        }
+        /* global Firebase */
+        var post = window.location.hash 
+        var postInfo = {
+            "name":window.location.hash,
+            "type":(getQuery("type") !== null ? getQuery("type") : "post"),
+        };
+        var fb = new Firebase("jeffreyblog.firebaseio.com/posts");
+        fb.on("value", function(snapshot) {
+            if (snapshot.child(post).val() === null) {
+                $("post-header").html("404 error");
+                $("post-subheading").html("your post was not found on this server");
+                $("post-meta").html("main server @ jeffreymeng.github.io/fireblog");
+                $("post-content").html("<p>The requested page was not found. It may have been removed, it's name may have been changed, it may have been moved");
+            } else {
+                $("post-header").html(snapshot.child(post).child("title").val());
+                $("post-subheading").html(snapshot.child(post).child("subtitle").val());
+                $("post-meta").html(snapshot.child(post).child("meta").val());
+                $("post-content").html(snapshot.child(post).child("content").val());
+            }
+        });
+    </script>
 </body>
 
 </html>
