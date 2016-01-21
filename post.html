@@ -188,7 +188,7 @@
             
         }
         /* global Firebase */
-        var post = window.location.hash 
+        var post = window.location.hash.replace("#", "")
         var postInfo = {
             "name":window.location.hash,
             "type":(getQuery("type") !== null ? getQuery("type") : "post"),
