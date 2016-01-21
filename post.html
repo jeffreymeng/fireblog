@@ -196,15 +196,15 @@
         var fb = new Firebase("jeffreyblog.firebaseio.com/posts");
         fb.on("value", function(snapshot) {
             if (snapshot.child(post).val() === null) {
-                $("post-header").html("404 error");
-                $("post-subheading").html("your post was not found on this server");
-                $("post-meta").html("main server @ jeffreymeng.github.io/fireblog");
-                $("post-content").html("<p>The requested page was not found. It may have been removed, it's name may have been changed, it may have been moved");
+                $("#post-header").html("404 error");
+                $("#post-subheading").html("your post was not found on this server");
+                $("#post-meta").html("main server @ jeffreymeng.github.io/fireblog");
+                $("#post-content").html("<p>The requested page was not found. It may have been removed, it's name may have been changed, it may have been moved");
             } else {
-                $("post-header").html(snapshot.child(post).child("title").val());
-                $("post-subheading").html(snapshot.child(post).child("subtitle").val());
-                $("post-meta").html(snapshot.child(post).child("meta").val());
-                $("post-content").html(snapshot.child(post).child("content").val());
+                $("#post-header").html(snapshot.child(post).child("title").val());
+                $("#post-subheading").html(snapshot.child(post).child("subtitle").val());
+                $("#post-meta").html(snapshot.child(post).child("meta").val());
+                $("#post-content").html(snapshot.child(post).child("content").val());
             }
         });
     </script>
