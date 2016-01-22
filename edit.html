@@ -227,21 +227,6 @@
     		var content = $("#markdown").val();
     		var url = "http://jeffreymeng.github.io/fireblog/post.html#" + $("#url").val();
     		var fb = new Firebase("https://jeffreyblog.firebaseio.com/posts").val();
-			fb.child(url).once('value', function(snapshot) {
-			   var exists = (snapshot.val() !== null);
-			   if (exists) {
-			   		if (prompt("The url was already taken. Do you want to override the content at this url? type yes or no ") === "yes") {
-			   			fb.child(url).set({
-			   			"title":title,
-			   			"subtitle":subtitle,
-			   			"meta":meta,
-			   			"content":content
-			   			})
-			   		} else {
-			   			alert("Your post was not posted.")
-			   		}
-			   		
-			   } else {
 			   		fb.child(url).set({
 			   			"title":title,
 			   			"subtitle":subtitle,
@@ -250,9 +235,7 @@
 			   		})
 			   		alert("your post was posted. The url for the post is " + url + ".")
 			   }
-			});
-    }
-    
+    };
 		$(function() {
 			$('div.split-pane').splitPane();
 			});
