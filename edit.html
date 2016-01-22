@@ -145,7 +145,7 @@
 			  <input type="text" class="form-control" id="url" aria-describedby="url-adon-input-group" placeholder="URL of your post. A short one word url is the best. Spaces will be replaced by - unless you add something else.">
 			</div>
 			<br>
-			<button class="btn btn-defualt" id="submit">Post</button>
+			<button class="btn btn-defualt" onclick="smt" id="submit">Post</button>
 		</div>
 	</div>
 <!-- Footer -->
@@ -220,8 +220,7 @@
     </script>
     <script>
     /* global Firebase */
-    $(document).ready(function(){
-    	$("#submit").click(function(){
+   function smt() {
     		var title = $("#post-form-title").val();
     		var subtitle = $("#post-form-subtitle").val();
     		var meta = $("#post-form-meta").val();
@@ -252,8 +251,8 @@
 			   		alert("your post was posted. The url for the post is " + url + ".")
 			   }
 			});
-    	});
-    });
+    }
+    
 		$(function() {
 			$('div.split-pane').splitPane();
 			});
