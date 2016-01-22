@@ -209,11 +209,11 @@
 		$(function() {
 			$('div.split-pane').splitPane();
 			});
-		if (window.location.hash === "#fullscreen") {
-			disableScroll();
-		}
+
 		function fullScreen() {
-			window.location.href="http://jeffreymeng.github.io/firelog/edit.html"
+			window.location.hash = "#"
+			window.location.hash="#fullscreen"
+			disableScroll();
 		}
 		
 
