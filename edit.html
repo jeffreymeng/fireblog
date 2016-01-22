@@ -117,9 +117,14 @@
 
 		<a href="javascript:fullScreen()">Full Screen</a>
 	</p>
+	<input id="post-form-title" class="form-control" placeholder="Title of your post no html or markdown is supported">
+	<br>
+	<input id="post-form-subtitle" class="form-control" placeholder="Subtitle of your post no html or markdown is supported">
+	<br>
+	<input id="post-form-meta" class="form-control" placeholder="Meta of your post(format: posted on 12/13/2015 by your name) replace the date with the current date no html or markdown is supported">
+	<br>
 	<a name="fullscreen" id="sphe"></a>
 	<div class="pretty-split-pane-frame">
-		<!-- This div is added for styling purposes only. It's not part of the split-pane plugin. -->
 		<div class="split-pane fixed-left" style="min-width: 5px;">
 			<textarea class="split-pane-component markdown" id="left-component" style="width: 50%;resize: none;">
 				
@@ -134,6 +139,13 @@
 			</div>
 			<div class="split-pane-resize-shim" style="display: none;"></div>
 		</div>
+		<br>
+		<div class="input-group">
+		  <span class="input-group-addon" id="url-adon-input-group">http://jeffreymeng.github.io/fireblog/post.html<b>#</b></span>
+		  <input type="text" class="form-control" id="url" aria-describedby="url-adon-input-group" placeholder="URL of your post. A short one word url is the best. Spaces will be replaced by - unless you add something else.">
+		</div>
+		<br>
+		<button class="btn btn-defualt form-control" id="submit">Post</button>
 	</div>
 <!-- Footer -->
     <footer>
@@ -206,14 +218,49 @@
         
     </script>
     <script>
+    /* global Firebase */
+    $(document).ready(function(){
+    	$("#submit").click(function(){
+    		var title = $("#post-form-title").val();
+    		var subtitle = $("#post-form-subtitle").val();
+    		var meta = $("#post-form-meta").val();
+    		var content = $("#markdown").val();
+    		var url = "http://jeffreymeng.github.io/fireblog/post.html#" + $("#url").val();
+    		var fb = new Firebase("https://jeffreyblog.firebaseio.com/posts").val();
+			fb.child(url).once('value', function(snapshot) {
+			   var exists = (snapshot.val() !== null);
+			   if (exists) {
+			   		if (prompt("The url was already taken. Do you want to override the content at this url? type yes or no ") === "yes") {
+			   			fb.child(url).set({
+			   			"title":title,
+			   			"subtitle":subtitle,
+			   			"meta":meta,
+			   			"content":content
+			   			})
+			   		} else {
+			   			alert("Your post was not posted.")
+			   		}
+			   		
+			   } else {
+			   		fb.child(url).set({
+			   			"title":title,
+			   			"subtitle":subtitle,
+			   			"meta":meta,
+			   			"content":content
+			   		})
+			   		alert("your post was posted. The url for the post is " + url + ".")
+			   }
+			});
+    	});
+    });
 		$(function() {
 			$('div.split-pane').splitPane();
 			});
 
 		function fullScreen() {
-			window.location.hash = "#"
-			window.location.hash="#fullscreen"
+			window.location.hash = "#";
 			disableScroll();
+			window.location.hash="#fullscreen";
 		}
 		
 
