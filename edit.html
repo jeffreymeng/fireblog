@@ -112,40 +112,41 @@
 			</div>
 		</div>
 	</header>
-
-	<p>
-
-		<a href="javascript:fullScreen()">Full Screen</a>
-	</p>
-	<input id="post-form-title" class="form-control" placeholder="Title of your post no html or markdown is supported">
-	<br>
-	<input id="post-form-subtitle" class="form-control" placeholder="Subtitle of your post no html or markdown is supported">
-	<br>
-	<input id="post-form-meta" class="form-control" placeholder="Meta of your post(format: posted on 12/13/2015 by your name) replace the date with the current date no html or markdown is supported">
-	<br>
-	<a name="fullscreen" id="sphe"></a>
-	<div class="pretty-split-pane-frame">
-		<div class="split-pane fixed-left" style="min-width: 5px;">
-			<textarea class="split-pane-component markdown" id="left-component" style="width: 50%;resize: none;">
-				
-			</textarea>
-			<div class="split-pane-divider" id="my-divider" style="left: 50%;">
-				<div class="split-pane-divider-inner"></div>
-			</div>
-			<div class="split-pane-component" id="right-component" style="left: 50%;">
-				<div class="pretty-split-pane-component-inner" id="preview">
+	<div class="col-lg-12">
+		<p>
+	
+			<a href="javascript:fullScreen()">Full Screen</a>
+		</p>
+		<input id="post-form-title" class="form-control" placeholder="Title of your post no html or markdown is supported">
+		<br>
+		<input id="post-form-subtitle" class="form-control" placeholder="Subtitle of your post no html or markdown is supported">
+		<br>
+		<input id="post-form-meta" class="form-control" placeholder="Meta of your post(format: posted on 12/13/2015 by your name) replace the date with the current date no html or markdown is supported">
+		<br>
+		<a name="fullscreen" id="sphe"></a>
+		<div class="pretty-split-pane-frame">
+			<div class="split-pane fixed-left" style="min-width: 5px;">
+				<textarea class="split-pane-component markdown" id="left-component" style="width: 50%;resize: none;">
 					
+				</textarea>
+				<div class="split-pane-divider" id="my-divider" style="left: 50%;">
+					<div class="split-pane-divider-inner"></div>
 				</div>
+				<div class="split-pane-component" id="right-component" style="left: 50%;">
+					<div class="pretty-split-pane-component-inner" id="preview">
+						
+					</div>
+				</div>
+				<div class="split-pane-resize-shim" style="display: none;"></div>
 			</div>
-			<div class="split-pane-resize-shim" style="display: none;"></div>
+			<br>
+			<div class="input-group">
+			  <span class="input-group-addon" id="url-adon-input-group">http://jeffreymeng.github.io/fireblog/post.html<b>#</b></span>
+			  <input type="text" class="form-control" id="url" aria-describedby="url-adon-input-group" placeholder="URL of your post. A short one word url is the best. Spaces will be replaced by - unless you add something else.">
+			</div>
+			<br>
+			<button class="btn btn-defualt" id="submit">Post</button>
 		</div>
-		<br>
-		<div class="input-group">
-		  <span class="input-group-addon" id="url-adon-input-group">http://jeffreymeng.github.io/fireblog/post.html<b>#</b></span>
-		  <input type="text" class="form-control" id="url" aria-describedby="url-adon-input-group" placeholder="URL of your post. A short one word url is the best. Spaces will be replaced by - unless you add something else.">
-		</div>
-		<br>
-		<button class="btn btn-defualt" id="submit">Post</button>
 	</div>
 <!-- Footer -->
     <footer>
