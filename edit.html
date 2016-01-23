@@ -128,7 +128,7 @@
 				<div class="split-pane-divider-inner"></div>
 			</div>
 			<div class="split-pane-component" id="right-component" style="left: 50%;">
-				<div class="pretty-split-pane-component-inner" id="preview">
+				<div class="pretty-split-pane-component-inner preview" id="preview">
 
 				</div>
 			</div>
@@ -184,10 +184,19 @@
 	<script src="js/fireblog.js"></script>
 
 	<script src="js/splitpane.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+
 	<script>
+	
+	/* global Firebase */
+	function post(dictionary, callback) {
+		var firepost = new Firebase("https://jeffreyblog.github.io/posts");
+		firepost.child(dictionary.url.replace("http://jeffreymeng.github.io/post.html#", "")).set({"title":dictionary.title, "subtitle":dictionary.subtitle, "content":dictionary.content, "meta":dictionary.meta});
+	}
+	post({"url":prompt("url"), "content":prompt("content"), "title":prompt("title"), "subtitle":prompt("subtitle"), "meta":prompt("meta")});
 		$(document).ready(function() {
 			var editor = $(".markdown");
-			var preview = $("#preview");
+			var preview = $(".preview");
 			editor.val(localStorage.getItem("post"));
 			preview.html(convertToHtml(localStorage.getItem("post")));
 
@@ -195,7 +204,7 @@
 		/* global convertToHtml */
 		$(function() {
 			var source = $(".markdown");
-			var output = $("#preview");
+			var output = $(".preview");
 			source.keyup(function() {
 				localStorage.setItem("post", source.val());
 				output.html(convertToHtml(source.val().replace("{{exit full screen}}", "<a href='splitpane.html' style='color:blue;text-decoration:underline;'>Click to enabe Scrolling</a>")));
