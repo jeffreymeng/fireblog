@@ -117,12 +117,7 @@
 	
 			<a href="javascript:fullScreen()">Full Screen</a>
 		</p>
-		<input id="post-form-title" class="form-control" placeholder="Title of your post no html or markdown is supported">
-		<br>
-		<input id="post-form-subtitle" class="form-control" placeholder="Subtitle of your post no html or markdown is supported">
-		<br>
-		<input id="post-form-meta" class="form-control" placeholder="Meta of your post(format: posted on 12/13/2015 by your name) replace the date with the current date no html or markdown is supported">
-		<br>
+
 		<a name="fullscreen" id="sphe"></a>
 		<div class="pretty-split-pane-frame">
 			<div class="split-pane fixed-left" style="min-width: 5px;">
@@ -219,23 +214,7 @@
         
     </script>
     <script>
-    /* global Firebase */
-   function smt() {
-    		var title = $("#post-form-title").val();
-    		var subtitle = $("#post-form-subtitle").val();
-    		var meta = $("#post-form-meta").val();
-    		var content = $("#markdown").val();
-    		var url = "http://jeffreymeng.github.io/fireblog/post.html#" + $("#url").val();
-    		var fb = new Firebase("https://jeffreyblog.firebaseio.com/posts").val();
-			   		fb.child(url).set({
-			   			"title":title,
-			   			"subtitle":subtitle,
-			   			"meta":meta,
-			   			"content":content
-			   		})
-			   		alert("your post was posted. The url for the post is " + url + ".")
-			   
-    };
+    
 		$(function() {
 			$('div.split-pane').splitPane();
 			});
