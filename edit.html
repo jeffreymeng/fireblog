@@ -187,12 +187,13 @@
 	<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
 
 	<script>
-	/* global Firebase */
-	function post(dictionary, callback) {
-		var firepost = new Firebase("https://jeffreyblog.github.io/posts");
-		firepost.child(dictionary.url.replace("http://jeffreymeng.github.io/post.html#", "")).set({"title":dictionary.title, "subtitle":dictionary.subtitle, "content":dictionary.content, "meta":dictionary.meta});
-	}
-	$(document).ready(function() {post({"url":prompt("url"), "content":prompt("content"), "title":prompt("title"), "subtitle":prompt("subtitle"), "meta":prompt("meta")});
+		/* global Firebase */
+		function post(dictionary, callback) {
+			var firepost = new Firebase("https://jeffreyblog.github.io/posts");
+			firepost.child(dictionary.url.replace("http://jeffreymeng.github.io/post.html#", "")).set({"title":dictionary.title, "subtitle":dictionary.subtitle, "content":dictionary.content, "meta":dictionary.meta});
+		};
+		$(document).ready(function() {
+			post({"url":prompt("url"), "content":prompt("content"), "title":prompt("title"), "subtitle":prompt("subtitle"), "meta":prompt("meta")})});
 		$(document).ready(function() {
 			var editor = $(".markdown");
 			var preview = $(".preview");
@@ -201,17 +202,18 @@
 
 		});
 		/* global convertToHtml */
-		$(function() {
+		$(document).ready(function() {
 			var source = $(".markdown");
 			var output = $(".preview");
 			source.keyup(function() {
 				localStorage.setItem("post", source.val());
-				output.html(convertToHtml(source.val().replace("{{exit full screen}}", "<a href='splitpane.html' style='color:blue;text-decoration:underline;'>Click to enabe Scrolling</a>")));
+				output.html(convertToHtml(source.val()).replace("{{curly bracket}}", "{").replace("{{exit full screen}}", "<a href='splitpane.html' style='color:blue;text-decoration:underline;'>Click to enabe Scrolling</a>").replace("{{astrick}}", "*").replace("{{underscore}}", "_"));
 
 			});
 		});
 	</script>
 	<script>
+
 		$(function() {
 			$('div.split-pane').splitPane();
 		});
