@@ -187,13 +187,12 @@
 	<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
 
 	<script>
-	
 	/* global Firebase */
 	function post(dictionary, callback) {
 		var firepost = new Firebase("https://jeffreyblog.github.io/posts");
 		firepost.child(dictionary.url.replace("http://jeffreymeng.github.io/post.html#", "")).set({"title":dictionary.title, "subtitle":dictionary.subtitle, "content":dictionary.content, "meta":dictionary.meta});
 	}
-	post({"url":prompt("url"), "content":prompt("content"), "title":prompt("title"), "subtitle":prompt("subtitle"), "meta":prompt("meta")});
+	$(document).ready(function() {post({"url":prompt("url"), "content":prompt("content"), "title":prompt("title"), "subtitle":prompt("subtitle"), "meta":prompt("meta")});
 		$(document).ready(function() {
 			var editor = $(".markdown");
 			var preview = $(".preview");
